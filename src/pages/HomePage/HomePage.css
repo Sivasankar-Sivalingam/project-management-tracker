@@ -1,0 +1,175 @@
+/* ─── HomePage ─────────────────────────────────────────── */
+
+/* Hero Banner */
+.home-hero {
+  position: relative;
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2.5rem 2rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f2748 0%, #1a1040 50%, #0d1117 100%);
+  border: 1px solid var(--border-subtle);
+}
+
+.home-hero::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(79, 142, 247, 0.18) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.home-hero::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  left: 30%;
+  width: 320px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(167, 139, 250, 0.12) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.home-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 0.75rem;
+  background: rgba(79, 142, 247, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(79, 142, 247, 0.2);
+}
+
+.home-hero__title {
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.home-hero__desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  max-width: 540px;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.home-hero__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.home-hero__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+}
+
+/* ─── Features header ───────────────────────────────────── */
+.home-features-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.home-features-header h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.home-features-header span {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* ─── Feature grid ──────────────────────────────────────── */
+.home-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════════════════════ */
+
+/* ─── Tablet (≤ 1024px) ─────────────────────────────────── */
+@media (max-width: 1024px) {
+  .home-hero {
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+  }
+  .home-features {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+/* ─── Mobile (≤ 768px) ──────────────────────────────────── */
+@media (max-width: 768px) {
+  .home-hero {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: var(--radius-md);
+  }
+  .home-hero__desc {
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
+  .home-features {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .home-features-header {
+    margin-bottom: 1rem;
+  }
+}
+
+/* ─── Small mobile (≤ 480px) ────────────────────────────── */
+@media (max-width: 480px) {
+  .home-hero {
+    padding: 1.25rem;
+    border-radius: var(--radius-sm);
+  }
+  .home-hero__eyebrow {
+    font-size: 0.68rem;
+  }
+  .home-features {
+    grid-template-columns: 1fr;
+  }
+  .home-hero__pill {
+    font-size: 0.72rem;
+    padding: 4px 10px;
+  }
+}

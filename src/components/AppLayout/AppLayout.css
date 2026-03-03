@@ -1,0 +1,214 @@
+/* ─── Navbar ─────────────────────────────────────────────── */
+.pmt-navbar {
+  position: sticky;
+  top: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  background: var(--bg-base);
+  border-bottom: 1px solid var(--border-subtle);
+  gap: 1rem;
+  z-index: 200;
+}
+
+.pmt-navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.pmt-navbar__logo-icon {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.pmt-navbar__title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.pmt-navbar__spacer {
+  flex: 1;
+}
+
+/* ─── Desktop nav ────────────────────────────────────────── */
+.pmt-navbar__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.pmt-navbar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+  white-space: nowrap;
+  text-decoration: none;
+}
+.pmt-navbar__link:hover,
+.pmt-navbar__link.active {
+  color: var(--accent-primary);
+  background: rgba(79, 142, 247, 0.08);
+}
+
+/* ─── Hamburger button ───────────────────────────────────── */
+.pmt-navbar__hamburger {
+  display: none; /* hidden on desktop */
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: var(--radius-sm);
+  line-height: 0;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast);
+  flex-shrink: 0;
+}
+.pmt-navbar__hamburger:hover {
+  color: var(--accent-primary);
+  background: rgba(79, 142, 247, 0.08);
+}
+
+/* ─── Mobile drawer ──────────────────────────────────────── */
+.pmt-mobile-menu {
+  display: none; /* shown via media query */
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0.75rem 1rem;
+  flex-direction: column;
+  gap: 0.25rem;
+  z-index: 199;
+  box-shadow: var(--shadow-md);
+  animation: slideDown 180ms ease;
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.pmt-mobile-menu__link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+.pmt-mobile-menu__link:hover,
+.pmt-mobile-menu__link.active {
+  color: var(--accent-primary);
+  background: rgba(79, 142, 247, 0.08);
+}
+
+/* ─── Shell layout ───────────────────────────────────────── */
+.pmt-shell {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ─── Main content area ──────────────────────────────────── */
+.pmt-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  min-width: 0; /* prevent flex blowout */
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════════════════════ */
+
+/* ─── Tablet (≤ 1024px) ──────────────────────────────────── */
+@media (max-width: 1024px) {
+  .pmt-navbar {
+    padding: 0 1.25rem;
+  }
+  .pmt-content {
+    padding: 1.5rem;
+  }
+  /* Hide label text, show icons only on tablet */
+  .pmt-navbar__link span {
+    display: none;
+  }
+  .pmt-navbar__link {
+    padding: 0.4rem 0.55rem;
+    gap: 0;
+  }
+}
+
+/* ─── Mobile (≤ 768px) ───────────────────────────────────── */
+@media (max-width: 768px) {
+  .pmt-navbar {
+    padding: 0 1rem;
+    position: sticky;
+  }
+
+  /* Hide desktop nav — show hamburger */
+  .pmt-navbar__meta--desktop {
+    display: none;
+  }
+  .pmt-navbar__hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Show mobile drawer */
+  .pmt-mobile-menu {
+    display: flex;
+  }
+
+  .pmt-content {
+    padding: 1.25rem 1rem;
+  }
+}
+
+/* ─── Small mobile (≤ 480px) ─────────────────────────────── */
+@media (max-width: 480px) {
+  .pmt-navbar {
+    padding: 0 0.75rem;
+    height: 56px;
+  }
+  .pmt-mobile-menu {
+    top: 56px;
+  }
+  .pmt-navbar__title {
+    font-size: 0.92rem;
+  }
+  /* .pmt-content {
+    padding: 1rem 0.75rem;
+  } */
+}
