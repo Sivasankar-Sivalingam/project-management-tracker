@@ -1,0 +1,37 @@
+{
+  "members": [
+    {
+      "id": "M001",
+      "name": "Alice Johnson",
+      "experience": 7,
+      "skillsets": ["React", "TypeScript", "Node.js"],
+      "description": "Senior frontend engineer with strong UI background.",
+      "projectStartDate": "2024-01-15",
+      "projectEndDate": "2025-01-15",
+      "allocationPercentage": 100
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T001",
+      "memberId": "M001",
+      "memberName": "Alice Johnson",
+      "taskName": "Build Dashboard UI",
+      "deliverables": "Fully responsive dashboard with filters",
+      "taskStartDate": "2024-01-15",
+      "taskEndDate": "2024-06-30",
+      "history": [
+        { "level": 1, "approver": "Bob Smith", "status": "Approved", "date": "2024-01-20" },
+        { "level": 2, "approver": "Carol White", "status": "Pending", "date": null }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "P001",
+      "name": "Project Alpha",
+      "startDate": "2024-01-01",
+      "endDate": "2025-01-01"
+    }
+  ]
+}
