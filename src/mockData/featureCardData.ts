@@ -4,7 +4,6 @@ import {
   CheckSquare,
   ClipboardList,
   PieChart,
-  Zap,
   type LucideIcon,
 } from "lucide-react";
 

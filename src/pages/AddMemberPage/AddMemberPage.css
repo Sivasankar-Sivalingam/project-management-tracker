@@ -1,76 +1,68 @@
-/* ─── Shared page layout (used across all page components) ── */
-.page-container {
-  padding: 0.25rem 0;
+/* ─── Add Member Page ─────────────────────────────────────── */
+.add-member-grid {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
 }
 
-.page-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
+@media (max-width: 900px) {
+  .add-member-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Form card ────────────────────────────────────────────── */
+.form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+}
+
+.form-section-title {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border-subtle);
 }
 
-.page-header__icon-wrap {
-  width: 46px;
-  height: 46px;
-  border-radius: var(--radius-md);
+/* ─── Row groups ───────────────────────────────────────────── */
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Submit row ───────────────────────────────────────────── */
+.form-submit-row {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
 }
 
-/* Accent colour helpers — reuse icon-bg-* from FeatureCard.css */
-.icon-bg-blue {
-  background: rgba(79, 142, 247, 0.15);
-  color: var(--accent-primary);
-}
-.icon-bg-purple {
-  background: rgba(167, 139, 250, 0.15);
-  color: var(--accent-secondary);
-}
-.icon-bg-green {
-  background: rgba(52, 211, 153, 0.15);
-  color: var(--accent-success);
-}
-.icon-bg-yellow {
-  background: rgba(251, 191, 36, 0.15);
-  color: var(--accent-warning);
-}
-.icon-bg-red {
-  background: rgba(248, 113, 113, 0.15);
+/* ─── Custom invalid feedback ─────────────────────────────── */
+.field-error {
+  font-size: 0.75rem;
   color: var(--accent-danger);
-}
-
-.page-header__title {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--text-primary);
+  margin-top: 0.3rem;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin: 0 0 0.25rem;
-  line-height: 1.3;
+  gap: 4px;
 }
 
-.page-header__badge {
-  vertical-align: middle;
-  font-size: 0.6rem !important;
-}
-
-.page-header__subtitle {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  margin: 0;
-  line-height: 1.5;
-}
-
-/* ─── Red badge variant (US_05) ──────────────────────────── */
-.badge-red {
-  background: rgba(248, 113, 113, 0.15);
-  color: var(--accent-danger);
-  border: 1px solid rgba(248, 113, 113, 0.3);
-}
+/* Reuse .form-control & .form-label from index.css */

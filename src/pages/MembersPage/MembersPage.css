@@ -45,3 +45,38 @@
   margin: 0;
   line-height: 1.5;
 }
+
+.member-card {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.member-card div {
+  margin-bottom: 0.5rem;
+}
+.member-skillset-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+}
+
+.member-skillset-pill span {
+  color: var(--text-secondary);
+}
+
+/* ─── Small mobile (≤ 480px) ────────────────────────────── */
+@media (max-width: 480px) {
+  .member-skillset-pill {
+    font-size: 0.72rem;
+    padding: 4px 10px;
+  }
+}

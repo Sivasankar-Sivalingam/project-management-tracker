@@ -3,18 +3,18 @@
 export interface Member {
   id: string;
   name: string;
-  experience: number;            // Must be > 4
-  skillsets: string[];           // Must have >= 3
+  experience: number; // Must be > 4
+  skillsets: string[]; // Must have >= 3
   description: string;
-  projectStartDate: string;      // ISO date string
-  projectEndDate: string;        // Must be > projectStartDate
+  projectStartDate: string; // ISO date string
+  projectEndDate: string; // Must be > projectStartDate
   allocationPercentage: number;
 }
 
 export interface ApprovalHistory {
   level: number;
   approver: string;
-  status: 'Approved' | 'Pending' | 'Rejected';
+  status: "Approved" | "Pending" | "Rejected";
   date: string | null;
 }
 
@@ -25,7 +25,7 @@ export interface Task {
   taskName: string;
   deliverables: string;
   taskStartDate: string;
-  taskEndDate: string;           // Must be > taskStartDate; must not exceed projectEndDate
+  taskEndDate: string; // Must be > taskStartDate; must not exceed projectEndDate
   history: ApprovalHistory[];
 }
 
@@ -49,5 +49,26 @@ export interface NavItem {
   path: string;
   icon: string;
   badge?: string;
-  badgeVariant?: 'blue' | 'purple' | 'green' | 'yellow';
+  badgeVariant?: "blue" | "purple" | "green" | "yellow";
+}
+
+export interface AddMemberFormState {
+  memberName: string;
+  memberId: string;
+  memberExperience: number;
+  memberSkillset: string[];
+  memberDescription: string;
+  projectStartDate: string;
+  projectEndDate: string;
+  memberAllocationPercentage: number;
+}
+
+export interface MemberData extends AddMemberFormState {
+  id: string;
+}
+
+export interface SkillTagInputProps {
+  skills: string[];
+  onChange: (skills: string[]) => void;
+  isInvalid?: boolean;
 }
