@@ -11,7 +11,7 @@ export default function AssignTaskPage() {
         <div>
           <h2 className="page-header__title">Assign Task</h2>
           <p className="page-header__subtitle">
-            TaskFactory form with date validation — coming soon.
+            Assign tasks to team members with date validation — coming soon.
           </p>
         </div>
       </div>

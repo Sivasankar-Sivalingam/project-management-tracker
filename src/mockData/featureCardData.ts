@@ -38,7 +38,7 @@ const FEATURE_CARDS: FeatureCardData[] = [
     icon: CheckSquare,
     accent: "green",
     title: "Assign Task",
-    desc: "Create and assign tasks to team members. Custom TaskFactory validates date constraints and raises exceptions when task end exceeds project end.",
+    desc: "Create and assign tasks to team members with date validation — task end date must not exceed the member's project end date.",
     cta: "Assign Task",
   },
   {

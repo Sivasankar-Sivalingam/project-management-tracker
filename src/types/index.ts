@@ -36,12 +36,6 @@ export interface Project {
   endDate: string;
 }
 
-// Factory error shape
-export interface FactoryError {
-  field: string;
-  message: string;
-}
-
 // Navigation menu item
 export interface NavItem {
   id: string;
