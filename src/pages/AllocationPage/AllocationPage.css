@@ -1,4 +1,4 @@
-/* ─── AllocationPage ──────────────────────────────────── */
+/* ─── AllocationPage ──────────────────────────────────────────── */
 .page-container {
   padding: 0.25rem 0;
 }
@@ -27,28 +27,184 @@
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--text-primary);
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
   margin: 0 0 0.25rem;
-  line-height: 1.3;
-}
-
-.page-header__badge {
-  vertical-align: middle;
-  font-size: 0.6rem !important;
 }
 
 .page-header__subtitle {
   font-size: 0.875rem;
   color: var(--text-secondary);
   margin: 0;
-  line-height: 1.5;
 }
 
-/* ─── Red badge variant (US_05) ──────────────────────── */
-.badge-red {
-  background: rgba(248, 113, 113, 0.15);
+/* ─── Allocation card ───────────────────────────────────────── */
+.allocation-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  margin-top: 2rem;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.info-card__title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* ─── Info grid ─────────────────────────────────────────────── */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem 1.5rem;
+}
+
+.info-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.info-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.info-value {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+}
+
+.info-value--accent {
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.info-value--danger {
+  font-weight: 700;
   color: var(--accent-danger);
-  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.cell-id {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.alloc-input {
+  max-width: 120px;
+  height: 38px;
+  padding: 0 0.85rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.alloc-input:focus {
+  border-color: var(--accent-primary);
+}
+
+.alloc-input.is-invalid {
+  border-color: var(--accent-danger);
+}
+
+/* ─── Warning banner ────────────────────────────────────────── */
+.alloc-warning {
+  display: flex;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--accent-warning);
+  font-size: 0.875rem;
+  align-items: flex-start;
+}
+
+.alloc-warning__text {
+  margin: 0 0 0.75rem;
+  color: var(--text-secondary);
+}
+
+.alloc-warning__text strong {
+  color: var(--text-primary);
+}
+
+.alloc-warning__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ─── Danger button ─────────────────────────────────────────── */
+.btn-danger-custom {
+  background: var(--accent-danger);
+  border: none;
+  border-radius: var(--radius-md);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: opacity var(--transition-fast);
+}
+
+.btn-danger-custom:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+.btn-danger-custom:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ─── Success banner ────────────────────────────────────────── */
+.alloc-success {
+  padding: 0.85rem 1.25rem;
+  background: rgba(52, 211, 153, 0.08);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--accent-success);
+  font-size: 0.875rem;
+}
+
+/* ─── Error ─────────────────────────────────────────────────── */
+.task-error {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.25);
+  border-radius: var(--radius-md);
+  color: var(--accent-danger);
+  font-size: 0.875rem;
+}
+
+/* ─── Update actions row ────────────────────────────────────── */
+.alloc-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.alloc-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
 }

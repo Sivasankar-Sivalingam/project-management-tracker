@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { ClipboardList, Search, AlertCircle } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ClipboardList, AlertCircle } from "lucide-react";
 import type { Task, MemberData, ApprovalHistory } from "../../types";
+import MemberSearch from "../../components/MemberSearch/MemberSearch";
 import "./TasksPage.css";
 
 function formatDate(iso: string | null) {
@@ -31,13 +32,10 @@ function ApprovalStatusBadge({
 export default function TasksPage() {
   const [members, setMembers] = useState<MemberData[]>([]);
   const [searchInput, setSearchInput] = useState("");
-  const [showSuggestions, setShowSuggestions] = useState(false);
   const [task, setTask] = useState<Task | null>(null);
   const [selectedMember, setSelectedMember] = useState<MemberData | null>(null);
   const [taskError, setTaskError] = useState<string | null>(null);
   const [taskLoading, setTaskLoading] = useState(false);
-
-  const searchWrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetch("http://localhost:3001/members")
@@ -46,31 +44,8 @@ export default function TasksPage() {
       .catch(() => {});
   }, []);
 
-  // Close suggestion dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        searchWrapRef.current &&
-        !searchWrapRef.current.contains(event.target as Node)
-      ) {
-        setShowSuggestions(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const filteredMembers = searchInput.trim()
-    ? members.filter(
-        (member) =>
-          member.memberName.toLowerCase().includes(searchInput.toLowerCase()) ||
-          member.memberId.toLowerCase().includes(searchInput.toLowerCase()),
-      )
-    : [];
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(event.target.value);
-    setShowSuggestions(true);
+  const handleInputChange = (value: string) => {
+    setSearchInput(value);
     setTask(null);
     setSelectedMember(null);
     setTaskError(null);
@@ -78,7 +53,6 @@ export default function TasksPage() {
 
   const handleSelectMember = async (member: MemberData) => {
     setSearchInput(`${member.memberName} (${member.memberId})`);
-    setShowSuggestions(false);
     setSelectedMember(member);
     setTask(null);
     setTaskError(null);
@@ -124,45 +98,14 @@ export default function TasksPage() {
         </div>
       </div>
 
-      <div className="search-wrap" ref={searchWrapRef}>
-        <div className="search-input-row">
-          <Search size={15} className="search-icon" />
-          <input
-            id="memberSearch"
-            className="search-input"
-            type="text"
-            placeholder="Search by member name or ID…"
-            value={searchInput}
-            onChange={handleInputChange}
-            onFocus={() => searchInput.trim() && setShowSuggestions(true)}
-            autoComplete="off"
-          />
-        </div>
-
-        {showSuggestions && filteredMembers.length > 0 && (
-          <ul className="suggestions-list" role="listbox">
-            {filteredMembers.map((member) => (
-              <li
-                key={member.memberId}
-                className="suggestion-item"
-                role="option"
-                onMouseDown={() => handleSelectMember(member)}
-              >
-                <span className="suggestion-name">{member.memberName}</span>
-                <span className="suggestion-id">{member.memberId}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-
-        {showSuggestions &&
-          searchInput.trim() &&
-          filteredMembers.length === 0 && (
-            <div className="suggestions-empty">
-              No members match your search.
-            </div>
-          )}
-      </div>
+      <MemberSearch
+        id="memberSearch"
+        members={members}
+        value={searchInput}
+        onChange={handleInputChange}
+        onSelect={handleSelectMember}
+        placeholder="Search by member name or ID…"
+      />
 
       {/* Task loading */}
       {taskLoading && (

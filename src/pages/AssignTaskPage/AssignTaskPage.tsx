@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { CheckSquare, AlertCircle } from "lucide-react";
 import { useSanitize } from "../../hooks/useSanitize";
 import type { MemberData, TaskFormState } from "../../types";
+import MemberSearch from "../../components/MemberSearch/MemberSearch";
 import "./AssignTaskPage.css";
-import { useState } from "react";
 
 export default function AssignTaskPage() {
   const { sanitizeFields } = useSanitize();
@@ -45,20 +45,26 @@ export default function AssignTaskPage() {
       .catch(() => {});
   }, []);
 
+  const [searchInput, setSearchInput] = useState("");
+
   useEffect(() => {
-    if (isSubmitSuccessful) resetForm();
+    if (isSubmitSuccessful) {
+      resetForm();
+      setSearchInput("");
+    }
   }, [isSubmitSuccessful, resetForm]);
 
-  const handleMemberSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const memberName = event.target.value;
-    const matchedMember = members.find(
-      (member) => member.memberName === memberName,
-    );
-    setValue("memberName", memberName, {
+  const handleSearchInputChange = (value: string) => {
+    setSearchInput(value);
+  };
+
+  const handleMemberSelect = (member: MemberData) => {
+    setSearchInput(`${member.memberName} (${member.memberId})`);
+    setValue("memberName", member.memberName, {
       shouldValidate: true,
       shouldDirty: true,
     });
-    setValue("memberId", matchedMember?.memberId ?? "", {
+    setValue("memberId", member.memberId, {
       shouldValidate: true,
       shouldDirty: true,
     });
@@ -100,21 +106,22 @@ export default function AssignTaskPage() {
                 <label className="form-label" htmlFor="memberName">
                   Member Name *
                 </label>
-                <select
-                  id="memberName"
-                  className={`form-control${errors.memberName ? " is-invalid" : ""}`}
+                {/* Hidden input to register required validation for memberName */}
+                <input
+                  type="hidden"
                   {...register("memberName", {
                     required: "Please select a team member.",
                   })}
-                  onChange={handleMemberSelect}
-                >
-                  <option value="">Select a member</option>
-                  {members.map((member) => (
-                    <option key={member.memberId} value={member.memberName}>
-                      {member.memberName}
-                    </option>
-                  ))}
-                </select>
+                />
+                <MemberSearch
+                  id="memberNameSearch"
+                  members={members}
+                  value={searchInput}
+                  onChange={handleSearchInputChange}
+                  onSelect={handleMemberSelect}
+                  placeholder="Search by member name or ID…"
+                  isInvalid={!!errors.memberName}
+                />
                 {errors.memberName && (
                   <p className="field-error">
                     <AlertCircle size={12} /> {errors.memberName.message}

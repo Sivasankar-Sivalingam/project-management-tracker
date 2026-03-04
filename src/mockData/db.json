@@ -5,22 +5,30 @@
       "memberName": "Alice Johnson",
       "memberId": "M001",
       "memberExperience": 7,
-      "memberSkillset": ["React", "TypeScript", "Node.js"],
+      "memberSkillset": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
       "memberDescription": "Senior frontend engineer with strong UI background.",
       "projectStartDate": "2024-01-15",
       "projectEndDate": "2025-01-15",
-      "memberAllocationPercentage": 100
+      "memberAllocationPercentage": 10
     },
     {
       "id": "d250",
       "memberName": "siva",
       "memberId": "M009",
       "memberExperience": 11,
-      "memberSkillset": ["react", "typescript", "bootstrap"],
+      "memberSkillset": [
+        "react",
+        "typescript",
+        "bootstrap"
+      ],
       "memberDescription": "Seniore frontend developer",
       "projectStartDate": "2026-03-04",
       "projectEndDate": "2026-06-04",
-      "memberAllocationPercentage": 50
+      "memberAllocationPercentage": 90
     }
   ],
   "tasks": [
