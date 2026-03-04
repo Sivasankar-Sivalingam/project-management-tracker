@@ -46,6 +46,35 @@
           "date": null
         }
       ]
+    },
+    {
+      "id": "T002",
+      "memberId": "M009",
+      "memberName": "siva",
+      "taskName": "Implement Auth Module",
+      "deliverables": "Login, registration, and JWT token handling",
+      "taskStartDate": "2026-03-05",
+      "taskEndDate": "2026-05-01",
+      "history": [
+        {
+          "level": 1,
+          "approver": "Alice Johnson",
+          "status": "Approved",
+          "date": "2026-03-06"
+        },
+        {
+          "level": 2,
+          "approver": "Carol White",
+          "status": "Approved",
+          "date": "2026-03-08"
+        },
+        {
+          "level": 3,
+          "approver": "David Lee",
+          "status": "Pending",
+          "date": null
+        }
+      ]
     }
   ],
   "projects": [
