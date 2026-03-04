@@ -49,10 +49,11 @@ export default function AddMember() {
   return (
     <div className="page-container">
       <div className="page-header">
+        <div className="page-header__icon-wrap icon-bg-green">
+          <UserPlus size={20} strokeWidth={1.75} />
+        </div>
         <div>
-          <h2 className="page-header__title">
-            <UserPlus size={20} strokeWidth={1.75} /> Add Team Member
-          </h2>
+          <h2 className="page-header__title">Add Team Member</h2>
           <p className="page-header__subtitle">
             Register a new member with full profile details
           </p>

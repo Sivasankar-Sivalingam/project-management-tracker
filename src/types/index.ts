@@ -66,3 +66,12 @@ export interface SkillTagInputProps {
   onChange: (skills: string[]) => void;
   isInvalid?: boolean;
 }
+
+export type TaskFormState = {
+  memberName: string;
+  memberId: string;
+  taskName: string;
+  deliverables: string;
+  taskStartDate: string;
+  taskEndDate: string;
+};

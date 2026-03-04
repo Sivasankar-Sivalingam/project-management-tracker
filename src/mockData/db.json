@@ -51,9 +51,9 @@
   "projects": [
     {
       "id": "P001",
-      "name": "Project Alpha",
-      "startDate": "2024-01-01",
-      "endDate": "2025-01-01"
+      "projectName": "Project Alpha",
+      "projectStartDate": "2024-01-01",
+      "projectEndDate": "2025-01-01"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
